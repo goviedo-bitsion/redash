@@ -11,6 +11,10 @@
     </h3>
   </div>
 
+  <div class="m-b-10" ng-if="$ctrl.localParametersDefs().length > 0">
+	<parameters parameters="$ctrl.localParametersDefs()"></parameters>
+  </div>
+
   <div class="col-md-12 query__vis">
     <visualization-renderer visualization="$ctrl.visualization" query-result="$ctrl.queryResult" class="t-body">
     </visualization-renderer>

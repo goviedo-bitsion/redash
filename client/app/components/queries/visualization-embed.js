@@ -17,8 +17,17 @@ const VisualizationEmbed = {
     this.logoUrl = logoUrl;
     this.query = new Query(this.data[0]);
     this.queryResult = new QueryResult(this.data[1]);
-    this.visualization =
-      find(this.query.visualizations, visualization => visualization.id === visualizationId);
+    this.visualization = find(this.query.visualizations, visualization => visualization.id === visualizationId);
+    this.widget = this.resolve.widget;
+	this.localParametersDefs = () => {
+		if (!this.localParameters) {
+		  this.localParameters = this.widget
+			.getQuery()
+			.getParametersDefs()
+			.filter(p => !p.global);
+		}
+		return this.localParameters;
+	  };
   },
 };
 
